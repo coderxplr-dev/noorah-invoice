@@ -76,7 +76,7 @@ describe('defaults and helpers', () => {
 
   it('creates an editable blank model with the supplied brand logo', () => {
     const blank = blankInvoiceData(NOW);
-    expect(blank.sellerLogo).toBe('/brand-logo.png');
+    expect(blank.sellerLogo).toBe(`${import.meta.env.BASE_URL}brand-logo.png`);
     expect(blank.issueDate).toBe('2026-09-21');
     expect(blank.issueTime).toBe('15:34:56');
     expect(blank.currency).toBe('SAR');
