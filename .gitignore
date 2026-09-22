@@ -1,0 +1,14 @@
+node_modules/
+.pnpm-store/
+dist/
+tmp/
+*.log
+.DS_Store
+output/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+scripts/render-sample.js
+scripts/render-sample.d.ts
+.env
+.env.*
