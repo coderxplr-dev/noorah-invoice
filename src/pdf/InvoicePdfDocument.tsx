@@ -31,7 +31,7 @@ const COLORS = {
   header: '#dfe4e8',
   light: '#f5f7f8',
   white: '#ffffff',
-  accent: '#1f3532',
+  accent: '#123c58',
 };
 
 const FONT_FILES = {

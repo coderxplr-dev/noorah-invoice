@@ -1,5 +1,6 @@
 import Decimal from 'decimal.js';
 import { assetUrl } from './assets';
+import { APP_NAME } from './brand';
 
 import type {
   BillingBasis,
@@ -415,7 +416,7 @@ export function getSaudiNow(now = new Date()): SaudiDateTimeDefaults {
 export function blankInvoiceData(now = new Date()): InvoiceData {
   const defaults = getSaudiNow(now);
   return {
-    sellerNameEn: 'NOORAH ZAID AL QARNI',
+    sellerNameEn: APP_NAME,
     sellerNameAr: '',
     sellerAddressEn: '',
     sellerAddressAr: '',

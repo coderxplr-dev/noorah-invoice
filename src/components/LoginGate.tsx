@@ -1,5 +1,6 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
-import { assetUrl } from '../lib/assets';
+import { APP_NAME } from '../lib/brand';
+import { BrandMark } from './BrandMark';
 
 // Browser-only convenience gate. This is not server authentication: the
 // credential and application code are inspectable by anyone with the bundle.
@@ -31,8 +32,8 @@ export default function LoginGate({ children }: { children: ReactNode }) {
 
   return <div className="login-page">
     <form className="login-card" onSubmit={login}>
-      <img src={assetUrl('brand-logo.png')} alt="Company logo" width="64" height="64" />
-      <h1>NOORAH ZAID AL QARNI</h1>
+      <BrandMark large />
+      <h1>{APP_NAME}</h1>
       <p>Sign in to your invoice workspace</p>
       <label htmlFor="login-email">Email</label>
       <input id="login-email" type="email" autoComplete="username" value={email} onChange={event => setEmail(event.target.value)} required autoFocus />

@@ -33,7 +33,8 @@ import {
 import { createInvoiceBlob, createInvoicePreviewBlob, getInvoiceFilename } from './pdf/pdf';
 import { InvoicePreview } from './components/InvoicePreview';
 import { PreviewModal } from './components/PreviewModal';
-import { assetUrl } from './lib/assets';
+import { APP_NAME } from './lib/brand';
+import { BrandMark } from './components/BrandMark';
 
 const SELLER_STORAGE_KEY = 'manpower-invoice-seller-v1';
 
@@ -379,8 +380,8 @@ export default function App() {
     <div className="app-shell">
       <header className="app-header">
         <div className="brand-lockup">
-          <img src={assetUrl('brand-logo.png')} alt="Invoice studio mark" />
-          <div><strong>NOORAH ZAID AL QARNI</strong><span>Bilingual tax invoice builder</span></div>
+          <BrandMark />
+          <div><strong>{APP_NAME}</strong><span>Bilingual tax invoice builder</span></div>
         </div>
         <div className="header-actions">
           <button className="button button--ghost" type="button" onClick={handleLoadSample} disabled={busy}>

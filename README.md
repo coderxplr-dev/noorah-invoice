@@ -1,6 +1,6 @@
-# Manpower Invoice Studio
+# Sad One Wash Invoice Studio
 
-Brand: NOORAH ZAID AL QARNI. The login screen uses the administrator credentials supplied for this project. It is a browser-only convenience gate, not secure authentication: the client contains a password hash and access can be bypassed. No password or login session is saved in browser storage; refresh requires signing in again. Use a backend or identity provider before deploying this as a protected application.
+Brand: Sad One Wash, with a blue-and-aqua interface. The login screen uses the administrator credentials supplied for this project. It is a browser-only convenience gate, not secure authentication: the client contains a password hash and access can be bypassed. No password or login session is saved in browser storage; refresh requires signing in again. Use a backend or identity provider before deploying this as a protected application.
 
 ## GitHub Pages deployment
 
