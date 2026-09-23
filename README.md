@@ -2,11 +2,11 @@
 
 Brand: Sad One Wash, with a blue-and-aqua interface. The login screen uses the administrator credentials supplied for this project. It is a browser-only convenience gate, not secure authentication: the client contains a password hash and access can be bypassed. No password or login session is saved in browser storage; refresh requires signing in again. Use a backend or identity provider before deploying this as a protected application.
 
-## GitHub Pages deployment
+## Deployment
 
-Push this project to the `main` branch of `coderxplr-dev/noorah-invoice`. In the repository's Settings > Pages, select **GitHub Actions** as the source. The included Deploy invoice app to GitHub Pages workflow tests, builds, and deploys on every push to main, or can be started manually from Actions. The expected address is `https://coderxplr-dev.github.io/noorah-invoice/` once deployment succeeds.
+GitHub Pages hosting and its automatic deployment workflow have been removed. The application source remains in `coderxplr-dev/noorah-invoice`; pushing changes does not publish a website.
 
-GitHub Pages is static hosting: the login is not an access-control boundary. Do not commit real invoices, passwords, or private customer/employee data. Generated PDFs, local environment files, and build artifacts are ignored by Git.
+Generated PDFs, local environment files, and build artifacts are ignored by Git.
 
 Use **Auto-generate random number** beside Invoice Number for an editable random identifier. This does not guarantee uniqueness or implement a controlled invoice sequence.
 
