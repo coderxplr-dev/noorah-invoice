@@ -4,7 +4,6 @@ import {
   calculateInvoice,
   formatMoney,
   formatQuantity,
-  formatQuantityWithUnit,
   formatRate,
   formatSar,
 } from '../lib/invoice';
@@ -319,7 +318,7 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
                         <Rate value={row.unitRate} />
                       </td>
                       <td className="invoice-quantity" dir="ltr">
-                        {formatQuantityWithUnit(row.quantity, row.billingBasis)}
+                        {formatQuantity(row.quantity)}
                       </td>
                       <td>
                         <Money value={row.taxableAmount} />
@@ -342,8 +341,6 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
           </p>
         </section>
 
-        <p className="section-charge-total">Services charges / <span lang="ar" dir="rtl">إجمالي الخدمات</span>: <Money value={calculated.serviceSubtotal} withCurrency /></p>
-
         {data.entryMode !== 'service' && <section className="invoice-section" aria-label="Employees and charges">
           <SectionHeading>Employees / <span lang="ar" dir="rtl">الموظفون</span></SectionHeading>
           <div className="invoice-table-scroll">
@@ -359,12 +356,11 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
               <tbody>{calculated.breakdownRows.map((row, index) => <tr key={row.id}>
                 <td>{index + 1}</td><td>{valueOrDash(row.employeeName)}</td>
                 <td>{valueOrDash(row.designationEn)}<div dir="rtl" lang="ar">{row.designationAr}</div></td>
-                <td>{formatQuantityWithUnit(row.quantity, row.billingBasis)}</td>
+                <td>{formatQuantity(row.quantity)}</td>
                 <td><Rate value={row.unitRate} /></td><td><Money value={row.grossAmount} /></td>
               </tr>)}</tbody>
             </table>
           </div>
-          <p className="section-charge-total">Employees charges / <span lang="ar" dir="rtl">إجمالي الموظفين</span>: <Money value={calculated.employeeSubtotal} withCurrency /></p>
         </section>}
 
         <section className="invoice-totals-layout" aria-label="Invoice totals and QR code">

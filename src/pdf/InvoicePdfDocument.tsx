@@ -693,9 +693,8 @@ function formatSar(value: string): string {
 }
 
 function quantityUnit(basis: BillingBasis, quantity: string): string {
-  const label =
-    basis === 'Hour' ? 'hrs' : basis === 'Day' ? 'days' : Number(quantity) === 1 ? 'month' : 'months';
-  return `${formatQuantity(quantity)} ${label}`;
+  void basis;
+  return formatQuantity(quantity);
 }
 
 function rowWeight(descriptionEn: string, descriptionAr: string): number {
@@ -1182,14 +1181,12 @@ function MainInvoicePages({
         <Text style={[styles.sectionTitleAr, { width: 60, textAlign: 'left' }]}>الخدمات</Text>
       </View>
       <InvoiceTable rows={calculated.rows.filter(row => row.kind === 'service')} repeatHeader />
-      <Text style={styles.chargesSubtotal} wrap={false}>Services charges: {formatSar(calculated.serviceSubtotal)}</Text>
       {data.entryMode !== 'service' && <>
         <View style={styles.chargesHeading} wrap={false} minPresenceAhead={65}>
           <Text style={[styles.sectionTitle, { width: 60 }]}>Employees /</Text>
           <Text style={[styles.sectionTitleAr, { width: 60, textAlign: 'left' }]}>الموظفون</Text>
         </View>
         <BreakdownTable rows={calculated.breakdownRows} offset={0} hourlyOnly={calculated.breakdownRows.every(row => row.billingBasis === 'Hour')} repeatHeader />
-        <Text style={styles.chargesSubtotal} wrap={false}>Employees charges: {formatSar(calculated.employeeSubtotal)}</Text>
       </>}
       <TotalsWithQr data={data} totals={calculated.totals} />
       <InvoiceNotes calculated={calculated} note={data.footerNote} />
