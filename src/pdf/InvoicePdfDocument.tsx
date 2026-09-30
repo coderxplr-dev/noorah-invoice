@@ -110,7 +110,8 @@ const styles = StyleSheet.create({
     fontFamily: 'InvoiceLatin',
     fontSize: 7.3,
     lineHeight: 1.3,
-    paddingTop: 23,
+    // Reserve a clean band for the company's pre-printed letterhead.
+    paddingTop: 55,
     paddingRight: 29,
     paddingBottom: 34,
     paddingLeft: 29,
