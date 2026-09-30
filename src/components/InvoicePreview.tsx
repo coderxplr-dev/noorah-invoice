@@ -206,36 +206,6 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
       aria-label="Live invoice document preview"
     >
       <article className="invoice-sheet" aria-label="Tax invoice page">
-        <header className="invoice-header">
-          <div className="invoice-company invoice-company--english" lang="en">
-            <h1>{valueOrDash(data.sellerNameEn)}</h1>
-            <p>
-              <span>CR</span> <Identifier value={data.sellerCrNumber} />
-            </p>
-            <p>
-              <span>VAT</span> <Identifier value={data.sellerVatNumber} />
-            </p>
-          </div>
-
-          <div className="invoice-logo-slot" aria-label="Seller company logo">
-            {data.sellerLogo ? (
-              <img className="invoice-logo" src={data.sellerLogo} alt="Seller company logo" />
-            ) : null}
-          </div>
-
-          <div className="invoice-company invoice-company--arabic" dir="rtl" lang="ar">
-            <h1>{valueOrDash(data.sellerNameAr)}</h1>
-            <p>
-              <span>السجل التجاري</span>{' '}
-              <Identifier value={data.sellerCrNumber} />
-            </p>
-            <p>
-              <span>الرقم الضريبي</span>{' '}
-              <Identifier value={data.sellerVatNumber} />
-            </p>
-          </div>
-        </header>
-
         <div className="invoice-title-block">
           <p lang="en">TAX INVOICE</p>
           <span aria-hidden="true">/</span>

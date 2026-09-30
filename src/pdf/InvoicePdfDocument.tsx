@@ -171,7 +171,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 5,
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: 8,
+    marginBottom: 12,
+    paddingBottom: 2,
   },
   titleEn: {
     fontSize: 13,
@@ -1168,7 +1170,10 @@ function MainInvoicePages({
 }): React.ReactElement {
   return (
     <Page size="A4" orientation="portrait" style={styles.page}>
-      <CompanyHeader data={data} />
+      <View style={styles.titleBox} wrap={false}>
+        <Text style={styles.titleEn}>TAX INVOICE /</Text>
+        <Text style={styles.titleAr}>فاتورة ضريبية</Text>
+      </View>
       <InvoiceMeta data={data} calculated={calculated} />
       <SellerAndBuyer data={data} />
       <View style={styles.chargesHeading} wrap={false} minPresenceAhead={65}>
