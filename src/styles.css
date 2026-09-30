@@ -287,7 +287,6 @@ main { width: min(1720px, 100%); margin: 0 auto; padding: 28px clamp(18px, 3.4vw
 .invoice-company--arabic { text-align: right; }
 .invoice-logo-slot { height: 66px; display: grid; place-items: center; }
 .invoice-logo { display: block; width: 60px; height: 60px; object-fit: contain; }
-.invoice-logo-placeholder { width: 44px; height: 44px; display: block; border: 1px dashed #bcc5cc; border-radius: 50%; }
 .invoice-title-block { margin: 14px auto 12px; display: flex; justify-content: center; align-items: center; gap: 9px; font-size: 13px; font-weight: 800; letter-spacing: .05em; color: #263943; }
 .invoice-title-block p { margin: 0; }
 .invoice-section { margin-top: 12px; }

@@ -220,9 +220,7 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
           <div className="invoice-logo-slot" aria-label="Seller company logo">
             {data.sellerLogo ? (
               <img className="invoice-logo" src={data.sellerLogo} alt="Seller company logo" />
-            ) : (
-              <span className="invoice-logo-placeholder" aria-hidden="true" />
-            )}
+            ) : null}
           </div>
 
           <div className="invoice-company invoice-company--arabic" dir="rtl" lang="ar">
