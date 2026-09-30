@@ -428,8 +428,31 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginTop: 8,
   },
-  totalsTable: {
+  totalsWithQr: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+  totalsQrSlot: {
+    width: '38%',
+    minHeight: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  totalsQrImage: {
+    width: 70,
+    height: 70,
+    objectFit: 'contain',
+  },
+  totalsWithQrTable: {
     width: '62%',
+  },
+  totalsWithQrTableInner: {
+    width: '100%',
+  },
+  totalsTable: {
+    width: '65%',
     borderLeftWidth: 0.55,
     borderTopWidth: 0.55,
     borderColor: COLORS.strongRule,
@@ -439,7 +462,7 @@ const styles = StyleSheet.create({
     minHeight: 19,
   },
   totalLabel: {
-    width: '67%',
+    width: '63%',
     borderRightWidth: 0.55,
     borderBottomWidth: 0.55,
     borderColor: COLORS.rule,
@@ -458,10 +481,10 @@ const styles = StyleSheet.create({
     direction: 'rtl',
     textAlign: 'right',
     color: COLORS.muted,
-    fontSize: 6.2,
+    fontSize: 5.8,
   },
   totalValue: {
-    width: '33%',
+    width: '37%',
     borderRightWidth: 0.55,
     borderBottomWidth: 0.55,
     borderColor: COLORS.rule,
@@ -470,7 +493,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'right',
     direction: 'ltr',
-    fontSize: 7.2,
+    fontSize: 6.8,
   },
   grandTotalLabel: {
     backgroundColor: COLORS.header,
@@ -788,8 +811,6 @@ function CompanyHeader({ data }: { data: InvoiceData }): React.ReactElement {
 }
 
 function HeaderMark({ data }: { data: InvoiceData }): React.ReactElement | null {
-  const qrDataUrl = buildZatcaQrSvgDataUrl(data);
-  if (qrDataUrl) return <Image src={qrDataUrl} style={styles.headerQr} />;
   return data.sellerLogo ? <Image src={data.sellerLogo} style={styles.logo} /> : null;
 }
 
@@ -1066,14 +1087,16 @@ function TotalsTable({
   totals,
   definitions = mainTotalDefinitions,
   compact = false,
+  qrLayout = false,
 }: {
   totals: InvoiceTotals;
   definitions?: TotalDefinition[];
   compact?: boolean;
+  qrLayout?: boolean;
 }): React.ReactElement {
   return (
-    <View style={styles.totalsWrap} wrap={false}>
-      <View style={[styles.totalsTable, compact ? styles.breakdownTotals : {}]}>
+    <View style={[styles.totalsWrap, qrLayout ? styles.totalsWithQrTable : {}]} wrap={false}>
+      <View style={[styles.totalsTable, qrLayout ? styles.totalsWithQrTableInner : {}, compact ? styles.breakdownTotals : {}]}>
         {definitions.map((definition) => (
           <View style={styles.totalRow} key={definition.key}>
             <View
@@ -1098,6 +1121,25 @@ function TotalsTable({
           </View>
         ))}
       </View>
+    </View>
+  );
+}
+
+function TotalsWithQr({
+  data,
+  totals,
+}: {
+  data: InvoiceData;
+  totals: InvoiceTotals;
+}): React.ReactElement {
+  const qrDataUrl = buildZatcaQrSvgDataUrl(data);
+
+  return (
+    <View style={styles.totalsWithQr} wrap={false} minPresenceAhead={150}>
+      <View style={styles.totalsQrSlot}>
+        {qrDataUrl ? <Image src={qrDataUrl} style={styles.totalsQrImage} /> : null}
+      </View>
+      <TotalsTable totals={totals} qrLayout />
     </View>
   );
 }
@@ -1143,7 +1185,7 @@ function MainInvoicePages({
         <BreakdownTable rows={calculated.breakdownRows} offset={0} hourlyOnly={calculated.breakdownRows.every(row => row.billingBasis === 'Hour')} repeatHeader />
         <Text style={styles.chargesSubtotal} wrap={false}>Employees charges: {formatSar(calculated.employeeSubtotal)}</Text>
       </>}
-      <TotalsTable totals={calculated.totals} />
+      <TotalsWithQr data={data} totals={calculated.totals} />
       <InvoiceNotes calculated={calculated} note={data.footerNote} />
       <PageNumber />
     </Page>

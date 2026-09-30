@@ -287,7 +287,6 @@ main { width: min(1720px, 100%); margin: 0 auto; padding: 28px clamp(18px, 3.4vw
 .invoice-company--arabic { text-align: right; }
 .invoice-logo-slot { height: 66px; display: grid; place-items: center; }
 .invoice-logo { display: block; width: 60px; height: 60px; object-fit: contain; }
-.invoice-header-qr { width: 64px; height: 64px; image-rendering: pixelated; }
 .invoice-logo-placeholder { width: 44px; height: 44px; display: block; border: 1px dashed #bcc5cc; border-radius: 50%; }
 .invoice-title-block { margin: 14px auto 12px; display: flex; justify-content: center; align-items: center; gap: 9px; font-size: 13px; font-weight: 800; letter-spacing: .05em; color: #263943; }
 .invoice-title-block p { margin: 0; }
@@ -321,7 +320,10 @@ main { width: min(1720px, 100%); margin: 0 auto; padding: 28px clamp(18px, 3.4vw
 .invoice-description-cell small { display: block; margin-top: 3px; color: #78818a; font-size: 6px; }
 .invoice-empty-row { padding: 16px !important; color: #7b858e; text-align: center !important; }
 .invoice-table-currency { margin: 4px 0 0; color: #6b757d; font-size: 6px; text-align: right; }
-.invoice-totals-section { display: flex; justify-content: flex-end; margin-top: 12px; break-inside: avoid; }
+.invoice-totals-layout { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 12px; break-inside: avoid; }
+.invoice-totals-qr { flex: 1 1 48%; min-height: 82px; display: flex; align-items: center; justify-content: center; }
+.invoice-totals-qr-image { width: 82px; height: 82px; image-rendering: pixelated; }
+.invoice-totals-section { flex: 0 0 52%; display: flex; justify-content: flex-end; break-inside: avoid; }
 .invoice-totals { width: 52%; border-collapse: collapse; font-size: 7px; }
 .invoice-totals th, .invoice-totals td { padding: 5px 6px; border: 1px solid #b0b7bd; }
 .invoice-totals th { width: 63%; background: #f4f5f6; text-align: left; font-weight: 500; }

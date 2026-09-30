@@ -217,10 +217,8 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
             </p>
           </div>
 
-          <div className="invoice-logo-slot" aria-label="Invoice QR code or seller logo">
-            {isZatcaQrComplete(data) ? (
-              <ZatcaQr data={data} size={64} className="invoice-header-qr" />
-            ) : data.sellerLogo ? (
+          <div className="invoice-logo-slot" aria-label="Seller company logo">
+            {data.sellerLogo ? (
               <img className="invoice-logo" src={data.sellerLogo} alt="Seller company logo" />
             ) : (
               <span className="invoice-logo-placeholder" aria-hidden="true" />
@@ -401,8 +399,14 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
           <p className="section-charge-total">Employees charges / <span lang="ar" dir="rtl">إجمالي الموظفين</span>: <Money value={calculated.employeeSubtotal} withCurrency /></p>
         </section>}
 
-        <section className="invoice-totals-section" aria-label="Invoice totals">
-          <table className="invoice-totals">
+        <section className="invoice-totals-layout" aria-label="Invoice totals and QR code">
+          <div className="invoice-totals-qr" aria-label="ZATCA QR code">
+            {isZatcaQrComplete(data) ? (
+              <ZatcaQr data={data} size={86} className="invoice-totals-qr-image" />
+            ) : null}
+          </div>
+          <div className="invoice-totals-section">
+            <table className="invoice-totals">
             <caption className="sr-only">Invoice totals in Saudi riyals</caption>
             <tbody>
               <tr>
@@ -461,7 +465,8 @@ export default function InvoicePreview({ data, compact = false }: InvoicePreview
                 </td>
               </tr>
             </tbody>
-          </table>
+            </table>
+          </div>
         </section>
 
         <footer className="invoice-footer">
