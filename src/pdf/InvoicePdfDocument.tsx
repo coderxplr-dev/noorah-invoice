@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     fontSize: 7.3,
     lineHeight: 1.3,
     // Reserve a clean band for the company's pre-printed letterhead.
-    paddingTop: 82,
+    paddingTop: 132,
     paddingRight: 29,
     paddingBottom: 34,
     paddingLeft: 29,
